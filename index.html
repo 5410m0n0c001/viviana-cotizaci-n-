@@ -372,6 +372,12 @@
             height: 250px;
             object-fit: contain;
             padding: 15px;
+            border-radius: 25px; /* Added rounded corners to the image itself */
+            transition: transform 0.5s ease;
+        }
+
+        .location-btn:hover .location-img {
+            transform: scale(1.05);
         }
 
         .location-name {
@@ -447,15 +453,29 @@
         }
 
         /* Scroll Reveal Animations */
+        /* Base Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Vertical Reveal (Default) */
+        .reveal-up {
+            transform: translateY(40px);
+        }
+
+        /* Lateral Reveal */
+        .reveal-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            transform: translateX(50px);
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(0, 0);
         }
 
         .delay-1 { transition-delay: 0.1s; }
@@ -529,7 +549,7 @@
             </div>
 
             <!-- Includes Section -->
-            <h3 class="section-title reveal"><i class="fa-solid fa-spa"></i> ¿Qué incluye el servicio?</h3>
+            <h3 class="section-title reveal reveal-up"><i class="fa-solid fa-spa"></i> ¿Qué incluye el servicio?</h3>
             
             <div class="includes-grid">
                 <div class="include-item reveal delay-1">
@@ -658,24 +678,24 @@
             <h3 class="section-title reveal" style="margin-top: 40px;"><i class="fa-solid fa-map-location-dot"></i> Locación a su Elección</h3>
             <p style="text-align: center; margin-bottom: 25px; color: var(--gray-text);" class="reveal">Seleccione alguna de estas exclusivas locaciones y conózcala a detalle:</p>
             
-            <div class="locations-grid reveal delay-3">
-                <a href="https://primaveraeventsgroup.com/centro-de-convenciones-presidente/" class="location-btn" target="_blank" rel="noopener noreferrer">
+            <div class="locations-grid">
+                <a href="https://primaveraeventsgroup.com/centro-de-convenciones-presidente/" class="location-btn reveal reveal-left delay-1" target="_blank" rel="noopener noreferrer">
                     <img src="presidente%20(1).png" alt="Centro de Convenciones Presidente" class="location-img">
                     <div class="location-name">Centro de Convenciones Presidente</div>
                 </a>
-                <a href="https://primaveraeventsgroup.com/salon-los-potrillos/" class="location-btn" target="_blank" rel="noopener noreferrer">
+                <a href="https://primaveraeventsgroup.com/salon-los-potrillos/" class="location-btn reveal reveal-right delay-2" target="_blank" rel="noopener noreferrer">
                     <img src="rancho%20los%20potrillos.webp" alt="Rancho Los Potrillos" class="location-img">
                     <div class="location-name">Rancho Los Potrillos</div>
                 </a>
-                <a href="https://primaveraeventsgroup.com/salon-los-caballos/" class="location-btn" target="_blank" rel="noopener noreferrer">
+                <a href="https://primaveraeventsgroup.com/salon-los-caballos/" class="location-btn reveal reveal-left delay-3" target="_blank" rel="noopener noreferrer">
                     <img src="los%20caballos.webp" alt="Salón Los Caballos" class="location-img">
                     <div class="location-name">Salón Los Caballos</div>
                 </a>
-                <a href="https://primaveraeventsgroup.com/jardin-la-flor/" class="location-btn" target="_blank" rel="noopener noreferrer">
+                <a href="https://primaveraeventsgroup.com/jardin-la-flor/" class="location-btn reveal reveal-right delay-4" target="_blank" rel="noopener noreferrer">
                     <img src="jardin%20la%20flor.png" alt="Jardín La Flor" class="location-img">
                     <div class="location-name">Jardín La Flor</div>
                 </a>
-                <a href="https://primaveraeventsgroup.com/salon-jardin-yolomecatl/" class="location-btn" target="_blank" rel="noopener noreferrer">
+                <a href="https://primaveraeventsgroup.com/salon-jardin-yolomecatl/" class="location-btn reveal reveal-left delay-5" target="_blank" rel="noopener noreferrer">
                     <img src="yolomecatl.webp" alt="Salón Jardín Yolomecatl" class="location-img">
                     <div class="location-name">Salón Jardín Yolomecatl</div>
                 </a>
