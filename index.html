@@ -1058,13 +1058,26 @@
                                 document.addEventListener('DOMContentLoaded', function() {
                                     var vid = document.getElementById('videoMenu');
                                     if(vid) {
-                                        // Attempt to play immediately bypassing some strict policies
-                                        var playPromise = vid.play();
-                                        if (playPromise !== undefined) {
-                                            playPromise.catch(function(error) {
-                                                console.warn("Autoplay prevented by browser:", error);
+                                        // Asegurar reproducción continua al ser visible
+                                        var observer = new IntersectionObserver(function(entries) {
+                                            entries.forEach(function(entry) {
+                                                if (entry.isIntersecting) {
+                                                    vid.play().catch(function(error) {
+                                                        console.warn("IntersectionObserver play prevented:", error);
+                                                    });
+                                                } else {
+                                                    vid.pause();
+                                                }
                                             });
-                                        }
+                                        }, { threshold: 0.1 });
+                                        
+                                        observer.observe(vid);
+
+                                        // Respaldo extra para el loop
+                                        vid.addEventListener('ended', function() {
+                                            vid.currentTime = 0;
+                                            vid.play();
+                                        });
                                     }
                                 });
                             </script>
