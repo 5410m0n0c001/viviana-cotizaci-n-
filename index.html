@@ -931,10 +931,25 @@
                 <!-- Banquete 3 Tiempos -->
                 <div class="reveal" style="grid-column: 1 / -1;">
                     <div class="include-item" style="flex-direction: row; flex-wrap: wrap;">
-                        <div class="include-img-container" style="flex: 1; min-width: 300px; height: auto;">
-                            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        <div class="include-img-container" style="flex: 1; min-width: 300px; position: relative;">
+                            <video id="videoMenu" autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; min-height: 300px; object-fit: cover; border-radius: 12px; display: block;">
                                 <source src="menu.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
                             </video>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var vid = document.getElementById('videoMenu');
+                                    if(vid) {
+                                        // Attempt to play immediately bypassing some strict policies
+                                        var playPromise = vid.play();
+                                        if (playPromise !== undefined) {
+                                            playPromise.catch(function(error) {
+                                                console.warn("Autoplay prevented by browser:", error);
+                                            });
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="include-content" style="flex: 1; min-width: 300px;">
                             <h4><i class="fa-solid fa-utensils"></i> Banquete 3 Tiempos</h4>
