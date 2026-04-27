@@ -587,9 +587,8 @@
            ========================================================================== */
         .floating-actions-container {
             position: fixed;
-            top: 50%;
+            bottom: 30px;
             right: 20px;
-            transform: translateY(-50%);
             z-index: 1000;
             display: flex;
             flex-direction: column-reverse; /* Bottom to top */
@@ -601,6 +600,7 @@
             display: flex;
             flex-direction: column-reverse; /* Unfold upwards */
             align-items: flex-end;
+            position: relative; /* So the absolute menu anchors here */
         }
 
         .fab-main {
@@ -617,6 +617,7 @@
             position: relative;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 2; /* Keep button above menu items if overlapping */
         }
 
         /* Distinct Colors */
@@ -659,12 +660,16 @@
             display: flex;
             flex-direction: column-reverse;
             gap: 12px;
+            position: absolute; /* Crucial fix so it doesn't push the layout */
+            bottom: 100%; /* Expands upwards starting exactly above the button */
+            right: 5px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             margin-bottom: 15px;
             pointer-events: none;
+            z-index: 1;
         }
 
         .fab-group.active .fab-menu {
@@ -1064,20 +1069,7 @@
             </button>
         </div>
 
-        <!-- 2. CONTACT MENU FAB -->
-        <div class="fab-group" id="contactGroup">
-            <div class="fab-menu">
-                <a href="tel:+527774587923" class="fab-item" title="Llamar"><i class="fa-solid fa-phone"></i></a>
-                <a href="mailto:contacto@primaveraeventsgroup.com" class="fab-item" title="Correo"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="fab-item" title="Ubicación"><i class="fa-solid fa-location-dot"></i></a>
-            </div>
-            <button class="fab-main fab-contact" id="btnContact">
-                <span class="fab-label">Contacto</span>
-                <i class="fa-solid fa-id-card-clip"></i>
-            </button>
-        </div>
-
-        <!-- 3. NATIVE SHARE FAB -->
+        <!-- 2. NATIVE SHARE FAB -->
         <button class="fab-main fab-share" id="btnShare" title="Compartir">
             <span class="fab-label">Compartir Propuesta</span>
             <i class="fa-solid fa-share-nodes"></i>
