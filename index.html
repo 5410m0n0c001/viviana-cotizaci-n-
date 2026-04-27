@@ -1314,7 +1314,7 @@
                         document.removeEventListener("touchstart", playAttempt);
                         document.removeEventListener("keydown", playAttempt);
                     }).catch(function(error) {
-                        // Playback prevented by browser policy. Keep listening for valid interactions.
+                        // Playback prevented by browser policy.
                         console.log("Audio en espera de interacción válida (clic/toque).");
                     });
                 }
@@ -1327,6 +1327,17 @@
             document.addEventListener("click", playAttempt);
             document.addEventListener("touchstart", playAttempt);
             document.addEventListener("keydown", playAttempt);
+
+            // Hack robusto: Si un video le "roba" el foco del audio y el navegador lo pausa, 
+            // forzamos a que vuelva a reproducirse inmediatamente.
+            audio.addEventListener("pause", function() {
+                var forcePlay = audio.play();
+                if (forcePlay !== undefined) {
+                    forcePlay.catch(function(e) {
+                        console.log("No se pudo reanudar el audio tras ser pausado por un video.");
+                    });
+                }
+            });
         });
     </script>
 </body>
