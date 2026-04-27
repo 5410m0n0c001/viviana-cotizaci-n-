@@ -194,6 +194,8 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap; /* Allows text to wrap instead of overflowing */
+            word-wrap: break-word; /* Prevents long words from breaking layout */
         }
 
         .section-title i {
@@ -467,7 +469,7 @@
 
         .services-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: 20px;
             margin-top: 20px;
         }
