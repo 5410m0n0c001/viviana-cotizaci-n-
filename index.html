@@ -943,25 +943,26 @@
 
     <!-- Floating Actions -->
     <div class="floating-actions-container">
-        <!-- Native Share Button -->
-        <button class="fab-action fab-share" id="btnShare" title="Compartir Propuesta">
-            <span class="fab-label">Compartir propuesta</span>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
-
-        <!-- Social Menu FAB -->
-        <div class="social-fab-container">
+        <!-- Main Unfoldable Menu -->
+        <div class="social-fab-container" id="mainFabContainer">
             <div class="social-menu" id="socialMenu">
+                <!-- Share (Native) -->
+                <button class="social-item share-btn" id="btnShare" title="Compartir"><i class="fa-solid fa-share-nodes"></i></button>
+                
+                <!-- Social Media -->
                 <a href="https://facebook.com/share/1GLd3Qt2Tj" target="_blank" class="social-item" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://instagram.com/primavera.events.group?igsh=Y2g4d3hvZW95dDc5" target="_blank" class="social-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://tiktok.com/@primavera_events_group?_r=1&_t=ZS-94uQ5m4lTyG" target="_blank" class="social-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://linkedin.com/in/richard-hernandez-3844ba3b9" target="_blank" class="social-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://tripadvisor.com/Profile/PrimaveraEventsGroup" target="_blank" class="social-item" title="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
-                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
+                
+                <!-- Contact Actions -->
+                <a href="tel:+527774587923" class="social-item" title="Regresar llamada"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:contacto@primaveraeventsgroup.com" class="social-item" title="Enviar Correo"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://primaveraeventsgroup.com" target="_blank" class="social-item" title="Sitio Web"><i class="fa-solid fa-globe"></i></a>
+                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Ver Ubicación"><i class="fa-solid fa-location-dot"></i></a>
             </div>
             <button class="fab-main" id="fabMain">
-                <span class="fab-label">Síguenos en redes sociales</span>
-                <i class="fa-solid fa-share-nodes"></i>
+                <span class="fab-label">Contacto y Redes</span>
+                <i class="fa-solid fa-plus"></i>
             </button>
         </div>
     </div>
@@ -975,10 +976,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 15px;
         }
 
-        .fab-main, .fab-share {
+        .fab-main {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -990,18 +990,12 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(246, 92, 122, 0.4);
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%);
         }
 
-        .fab-main { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%); }
-        .fab-share { 
-            background: var(--primary-dark); 
-            font-size: 1.3rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .fab-main:hover, .fab-share:hover { transform: scale(1.1); }
+        .fab-main:hover { transform: scale(1.1); }
 
         .fab-label {
             position: absolute;
@@ -1019,7 +1013,7 @@
             font-weight: 500;
         }
 
-        .fab-action:hover .fab-label, .social-fab-container:hover .fab-label {
+        .social-fab-container:hover .fab-label {
             opacity: 1;
             visibility: visible;
             right: 70px;
@@ -1032,8 +1026,8 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 15px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 20px;
         }
 
         .social-fab-container.active .social-menu {
@@ -1043,8 +1037,8 @@
         }
 
         .social-item {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--white);
             color: var(--primary-pink);
@@ -1052,18 +1046,26 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .social-item:hover {
             background: var(--primary-pink);
             color: var(--white);
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
         }
 
-        .social-fab-container.active .fab-main i { transform: rotate(90deg); }
+        .share-btn { color: var(--primary-dark); }
+        .share-btn:hover { background: var(--primary-dark); color: var(--white); }
+
+        .social-fab-container.active .fab-main {
+            transform: rotate(135deg);
+            background: var(--primary-dark);
+        }
     </style>
 
     <script>
@@ -1082,7 +1084,7 @@
             reveals.forEach(reveal => { observer.observe(reveal); });
 
             // FAB Menu Toggle
-            const fabContainer = document.querySelector('.social-fab-container');
+            const fabContainer = document.getElementById('mainFabContainer');
             const fabMain = document.getElementById('fabMain');
 
             fabMain.addEventListener('click', () => {
