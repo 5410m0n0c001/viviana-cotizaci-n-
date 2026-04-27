@@ -74,6 +74,43 @@
             object-fit: contain;
         }
 
+        .preloader-overlay {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .preloader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            font-weight: 500;
+        }
+
+        .btn-enter {
+            background: var(--primary-pink);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(246, 92, 122, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.05);
+            background: #e04b69;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--background-light);
@@ -747,9 +784,13 @@
 <body>
     <!-- Preloader -->
     <div id="preloader">
-        <video id="preloaderVideo" autoplay muted playsinline>
+        <video id="preloaderVideo" autoplay muted loop playsinline>
             <source src="precarga.mp4" type="video/mp4">
         </video>
+        <div class="preloader-overlay">
+            <p class="preloader-text">Gracias, agradecemos que nos hayas tomado en cuenta para tu evento.</p>
+            <button id="btnEnter" class="btn-enter">Haz clic para continuar</button>
+        </div>
     </div>
     
     <script>
@@ -757,6 +798,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const preloader = document.getElementById('preloader');
             const preloaderVideo = document.getElementById('preloaderVideo');
+            const btnEnter = document.getElementById('btnEnter');
+            const bgAudio = document.getElementById('bgAudio');
             
             const hidePreloader = () => {
                 if (preloader) {
@@ -768,17 +811,24 @@
             if (preloaderVideo) {
                 var playPromise = preloaderVideo.play();
                 if (playPromise !== undefined) {
-                    playPromise.catch(function() {
-                        // If autoplay is blocked, hide immediately
-                        hidePreloader();
+                    playPromise.catch(function(e) {
+                        console.log("Preloader video autoplay blocked.");
                     });
                 }
-                preloaderVideo.addEventListener('ended', hidePreloader);
-                // Fallback timeout in case video fails to load
-                setTimeout(hidePreloader, 6000);
-            } else {
-                window.addEventListener('load', hidePreloader);
+                // Se mantiene en bucle esperando el clic
             }
+
+            // Manejador del botón de entrada
+            btnEnter.addEventListener('click', function() {
+                // El clic del usuario desbloquea el audio instantáneamente
+                if (bgAudio) {
+                    bgAudio.play().catch(function(e) {
+                        console.log("Error reproduciendo audio:", e);
+                    });
+                }
+                // Ocultamos la precarga para revelar la página
+                hidePreloader();
+            });
         });
     </script>
 
