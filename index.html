@@ -60,9 +60,9 @@
 
         .hero {
             position: relative;
-            height: 60vh;
-            min-height: 400px;
-            background-image: url('viviana_hero.png');
+            height: 65vh;
+            min-height: 450px;
+            background-image: url('hero.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -74,7 +74,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
         }
 
         .hero-content {
@@ -87,25 +87,25 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 5px;
             font-weight: 600;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 300;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--soft-pink);
             margin-top: 10px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: -80px auto 60px;
+            max-width: 1100px;
+            margin: -100px auto 60px;
             position: relative;
             z-index: 2;
             padding: 0 20px;
@@ -113,8 +113,8 @@
 
         .quote-card {
             background: var(--white);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
             padding: 60px;
             animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
         }
@@ -124,76 +124,76 @@
             justify-content: space-between;
             align-items: flex-start;
             border-bottom: 1px solid var(--beige);
-            padding-bottom: 30px;
-            margin-bottom: 40px;
+            padding-bottom: 40px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
             gap: 20px;
         }
 
         .header-main h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-dark);
-            line-height: 1.2;
-            margin-bottom: 10px;
+            line-height: 1.1;
+            margin-bottom: 15px;
         }
 
         .header-main p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--gray-text);
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .badge-anniversary {
             display: inline-block;
             background: var(--soft-pink);
             color: var(--primary-pink);
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 0.9rem;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .summary-boxes {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
         .info-box {
             text-align: center;
             background: var(--background-light);
-            padding: 15px 20px;
-            border-radius: 16px;
+            padding: 20px 30px;
+            border-radius: 20px;
             border: 1px solid var(--beige);
-            min-width: 140px;
+            min-width: 160px;
         }
 
         .info-box span {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--gray-text);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         .info-box strong {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             color: var(--primary-dark);
             font-family: 'Playfair Display', serif;
         }
 
         .section-title {
             color: var(--primary-dark);
-            font-size: 1.8rem;
-            margin: 40px 0 30px;
+            font-size: 2rem;
+            margin: 60px 0 40px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         .section-title i {
@@ -202,66 +202,88 @@
 
         .includes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
         .include-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 25px;
             background: var(--white);
             border: 1px solid var(--beige);
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
         }
 
         .include-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             border-color: var(--primary-pink);
         }
 
-        .include-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--soft-pink);
-            color: var(--primary-pink);
-            border-radius: 14px;
+        .include-img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .include-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .include-item:hover .include-img {
+            transform: scale(1.1);
+        }
+
+        .include-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .include-content h4 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
+            gap: 10px;
         }
 
-        .include-item:hover .include-icon {
-            background: var(--primary-pink);
-            color: var(--white);
-            transform: rotate(5deg);
-        }
-
-        .include-text h4 {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--primary-dark);
-        }
-
-        .include-text p {
+        .include-content p {
             font-size: 0.95rem;
             color: var(--gray-text);
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        /* Video Section */
+        .video-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #000;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
         }
 
         .pricing-section {
             background: var(--background-light);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 50px;
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: 60px;
         }
 
         .pricing-table {
@@ -271,139 +293,74 @@
 
         .pricing-table th {
             text-align: left;
-            padding: 15px;
+            padding: 20px;
             color: var(--gray-text);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--beige);
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid var(--beige);
         }
 
         .pricing-table td {
-            padding: 25px 15px;
+            padding: 30px 20px;
             border-bottom: 1px solid var(--beige);
-        }
-
-        .pricing-table tr:last-child td {
-            border-bottom: none;
         }
 
         .item-main {
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             display: block;
-            margin-bottom: 5px;
-        }
-
-        .item-sub {
-            font-size: 0.9rem;
-            color: var(--gray-text);
+            margin-bottom: 8px;
         }
 
         .price-val {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary-pink);
             text-align: right;
         }
 
         .total-box {
-            margin-top: 30px;
-            padding-top: 30px;
+            margin-top: 40px;
+            padding-top: 40px;
             border-top: 2px solid var(--beige);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .total-label {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary-dark);
-        }
-
         .total-amount {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--primary-dark);
         }
 
-        .cta-container {
-            text-align: center;
-            margin-top: 60px;
+        /* Animations */
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        .reveal.active .include-item {
+            animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
 
-        .btn-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
-        }
-
-        .home-service-badge {
-            background: var(--gold-accent);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray-text);
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Stagger animations for grid items */
+        .includes-grid > .reveal:nth-child(1) .include-item { animation-delay: 0.1s; }
+        .includes-grid > .reveal:nth-child(2) .include-item { animation-delay: 0.2s; }
+        .includes-grid > .reveal:nth-child(3) .include-item { animation-delay: 0.3s; }
+        .includes-grid > .reveal:nth-child(4) .include-item { animation-delay: 0.4s; }
+        .includes-grid > .reveal:nth-child(5) .include-item { animation-delay: 0.5s; }
+        .includes-grid > .reveal:nth-child(6) .include-item { animation-delay: 0.6s; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .quote-card { padding: 30px 20px; }
-            .header-info { flex-direction: column; align-items: center; text-align: center; }
-            .summary-boxes { width: 100%; justify-content: center; }
-            .info-box { flex: 1; min-width: auto; }
-            .pricing-section { padding: 20px; }
-            .price-val { font-size: 1.4rem; }
-            .total-amount { font-size: 2rem; }
+            .hero h1 { font-size: 3rem; }
+            .header-main h2 { font-size: 2.2rem; }
+            .summary-boxes { flex-direction: column; width: 100%; }
+            .info-box { width: 100%; }
+            .quote-card { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -422,9 +379,9 @@
             <div class="header-info reveal">
                 <div class="header-main">
                     <h2>Aniversario de Bodas</h2>
-                    <p>Estimada <strong>Viviana</strong>, es un honor presentarle esta propuesta integral diseñada para celebrar su aniversario con la elegancia y distinción que merece.</p>
+                    <p>Estimada <strong>Viviana</strong>, hemos diseñado una experiencia visual y gastronómica única para celebrar su aniversario con el más alto estándar de calidad.</p>
                     <span class="badge-anniversary"><i class="fa-solid fa-heart"></i> Celebración de Amor</span>
-                    <span class="home-service-badge"><i class="fa-solid fa-house-chimney"></i> Servicio a Domicilio</span>
+                    <span class="home-service-badge"><i class="fa-solid fa-house-chimney"></i> Servicio Personalizado</span>
                 </div>
                 <div class="summary-boxes">
                     <div class="info-box">
@@ -439,141 +396,207 @@
             </div>
 
             <!-- Inclusions -->
-            <h3 class="section-title reveal"><i class="fa-solid fa-gem"></i> Experiencia Detallada</h3>
+            <h3 class="section-title reveal"><i class="fa-solid fa-gem"></i> Nuestra Propuesta Visual</h3>
             
             <div class="includes-grid">
                 <!-- Mobiliario -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-chair"></i></div>
-                    <div class="include-text">
-                        <h4>Mobiliario de Gala</h4>
-                        <p>Montaje elegante con mesas y sillas de diseño exclusivo para su comodidad.</p>
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="imobiliario%20elegante.webp" alt="Mobiliario" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-chair"></i> Mobiliario Elegante</h4>
+                            <p>Montaje de gala con mobiliario de diseño que aporta sofisticación y confort a su celebración.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Vajilla -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-plate-wheat"></i></div>
-                    <div class="include-text">
-                        <h4>Equipo Premium</h4>
-                        <p>Incluye plato base decorativo, vajilla de lujo y cristalería fina seleccionada.</p>
+                <!-- Mantelería -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="manteleria.webp" alt="Mantelería" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-scroll"></i> Mantelería Fina</h4>
+                            <p>Textiles de alta calidad y diseños exclusivos para vestir sus mesas con distinción.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Banquete -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-utensils"></i></div>
-                    <div class="include-text">
-                        <h4>Banquete 3 Tiempos</h4>
-                        <p>Menú gourmet completo: Entrada delicada, plato fuerte premium y tornafiesta.</p>
+                <!-- Cubertería -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="cuberteria.webp" alt="Cubertería" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-utensils"></i> Cubertería de Lujo</h4>
+                            <p>Set completo de cubiertos con acabados premium para una experiencia gastronómica superior.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Bebidas -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-wine-glass"></i></div>
-                    <div class="include-text">
-                        <h4>Bebidas e Insumos</h4>
-                        <p>Servicio ilimitado de refresco, hielo en cubo constante y mezcladores de calidad.</p>
+                <!-- Cristalería -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="cristaleria.webp" alt="Cristalería" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-wine-glass"></i> Cristalería Fina</h4>
+                            <p>Copas y vasos de cristal seleccionados para cada tipo de bebida y brindis.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Decoración 1 -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-leaf"></i></div>
-                    <div class="include-text">
-                        <h4>Centros de Mesa</h4>
-                        <p>Hermosos arreglos decorativos diseñados para realzar la estética de sus mesas.</p>
+                <!-- Centros de Mesa -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="centro%20de%20mesa%20(1).webp" alt="Centros de Mesa" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-leaf"></i> Centros de Mesa</h4>
+                            <p>Diseños florales y decorativos creados específicamente para la temática de su aniversario.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Decoración 2 -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-couch"></i></div>
-                    <div class="include-text">
-                        <h4>Mesa Principal</h4>
-                        <p>Espacio exclusivo para los anfitriones con sillones elegantes de diseño especial.</p>
+                <!-- Mesa Principal -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="mesa%20principal.webp" alt="Mesa Principal" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-couch"></i> Mesa Principal</h4>
+                            <p>Espacio destacado para los anfitriones con sillones elegantes y decoración especial.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Audio -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-headphones"></i></div>
-                    <div class="include-text">
-                        <h4>DJ Profesional</h4>
-                        <p>Especialista con amplio repertorio musical y mezclas en vivo para ambientar el evento.</p>
+                <!-- Banquete Video -->
+                <div class="reveal" style="grid-column: 1 / -1;">
+                    <div class="include-item" style="flex-direction: row; flex-wrap: wrap;">
+                        <div class="include-img-container" style="flex: 1; min-width: 300px; height: auto;">
+                            <div class="video-container">
+                                <video autoplay muted loop playsinline>
+                                    <source src="menu.mp4" type="video/mp4">
+                                    Tu navegador no soporta video.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="include-content" style="flex: 1; min-width: 300px;">
+                            <h4><i class="fa-solid fa-utensils"></i> Banquete 3 Tiempos</h4>
+                            <p>Una experiencia culinaria completa que incluye entrada gourmet, plato fuerte de autor y nuestra exclusiva tornafiesta.</p>
+                            <p style="margin-top: 15px; font-weight: 500; color: var(--primary-pink);">Vea nuestra propuesta de menú en el video adjunto.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Iluminación -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <div class="include-text">
-                        <h4>Luces Robóticas</h4>
-                        <p>Sistema de iluminación inteligente y robótica para crear una atmósfera dinámica.</p>
+                <!-- DJ -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="dj.webp" alt="DJ" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-compact-disc"></i> DJ Profesional</h4>
+                            <p>Amplio repertorio musical y mezclas en vivo con equipo de audio de alta fidelidad.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Humo -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-wind"></i></div>
-                    <div class="include-text">
-                        <h4>Máquina de Humo</h4>
-                        <p>Máquina de humo atmosférica para resaltar los efectos de iluminación y pista.</p>
+                <!-- Coordinador -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="cordinador%20(1).webp" alt="Coordinador" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-clipboard-check"></i> Coordinador VIP</h4>
+                            <p>Gestión integral del evento para que usted solo se preocupe por disfrutar.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Pista -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-vector-square"></i></div>
-                    <div class="include-text">
-                        <h4>Pista de Baile</h4>
-                        <p>Área de baile profesional con dimensiones de 5x5 metros para el disfrute de sus invitados.</p>
+                <!-- Capitán -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="capitan.webp" alt="Capitán" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-user-tie"></i> Capitán de Meseros</h4>
+                            <p>Supervisión directa del servicio a la mesa para una atención impecable y fluida.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Efectos -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-wand-sparkles"></i></div>
-                    <div class="include-text">
-                        <h4>Chisperos VIP</h4>
-                        <p>2 chisperos de efectos especiales para momentos clave y espectaculares del evento.</p>
+                <!-- Meseros -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="meseros.webp" alt="Meseros" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-bell-concierge"></i> Staff de Meseros</h4>
+                            <p>Personal uniformado y altamente capacitado para el servicio de platillos y bebidas.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Staff 1 -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-user-tie"></i></div>
-                    <div class="include-text">
-                        <h4>Servicio de Meseros</h4>
-                        <p>Personal capacitado para brindar una atención de excelencia directamente a la mesa.</p>
+                <!-- Hostess -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="hostess.webp" alt="Hostess" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-id-card"></i> Hostess</h4>
+                            <p>Recepción cordial y asignación de lugares para todos sus invitados.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Staff 2 -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                    <div class="include-text">
-                        <h4>Coordinador</h4>
-                        <p>Encargado de supervisar la logística y asegurar el cumplimiento de cada detalle.</p>
+                <!-- Bartender -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="bartender.webp" alt="Bartender" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-martini-glass-shaker"></i> Bartender Especializado</h4>
+                            <p>Preparación profesional de mezcladores y servicio de barra durante todo el evento.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Staff 3 -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-bell-concierge"></i></div>
-                    <div class="include-text">
-                        <h4>Hostess</h4>
-                        <p>Personal dedicado a la recepción cordial y el acompañamiento de sus invitados.</p>
+                <!-- Tiempo de Servicio -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container">
+                            <img src="tiempodeservicio.webp" alt="Tiempo de Servicio" class="include-img">
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-clock"></i> 8 Horas de Servicio</h4>
+                            <p>Disfrute de una celebración extendida con total cobertura de nuestro personal y equipo.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Logística -->
-                <div class="include-item reveal">
-                    <div class="include-icon"><i class="fa-solid fa-house-chimney"></i></div>
-                    <div class="include-text">
-                        <h4>Servicio a Domicilio</h4>
-                        <p>Logística de transporte y montaje total en la ubicación que usted nos indique.</p>
+                <!-- Pista 5x5 -->
+                <div class="reveal">
+                    <div class="include-item">
+                        <div class="include-img-container" style="background: var(--primary-dark); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--gold-accent);">
+                            <i class="fa-solid fa-vector-square"></i>
+                        </div>
+                        <div class="include-content">
+                            <h4><i class="fa-solid fa-bolt"></i> Pista y Efectos</h4>
+                            <p>Pista de baile de 5x5 metros y 2 chisperos para momentos espectaculares.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -591,15 +614,15 @@
                     <tbody>
                         <tr>
                             <td>
-                                <span class="item-main">Paquete Aniversario Premium</span>
-                                <span class="item-sub">Servicio integral para 90 personas con todos los elementos mencionados.</span>
+                                <span class="item-main">Paquete Aniversario Premium Completo</span>
+                                <span class="item-sub">Servicio integral para 90 personas con todos los elementos visuales y de staff mencionados (8 Horas).</span>
                             </td>
                             <td class="price-val">$690.00 <span style="font-size: 0.9rem; color: var(--gray-text);">p/p</span></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="total-box">
-                    <div class="total-label">Total Inversión Estimada</div>
+                    <div class="total-label" style="font-size: 1.3rem;">Total Inversión Estimada</div>
                     <div class="total-amount">$62,100.00</div>
                 </div>
             </div>
