@@ -525,11 +525,31 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
+            .hero { height: 50vh; min-height: 350px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 0.9rem; letter-spacing: 3px; }
+            
+            .container { margin-top: -60px; padding: 0 15px; }
+            .quote-card { padding: 40px 20px; border-radius: 20px; }
+            
             .header-main h2 { font-size: 2.2rem; }
-            .summary-boxes { flex-direction: column; width: 100%; }
-            .info-box { width: 100%; }
-            .quote-card { padding: 40px 20px; }
+            .header-info { text-align: center; justify-content: center; }
+            
+            .summary-boxes { width: 100%; flex-direction: row; gap: 10px; }
+            .info-box { flex: 1; padding: 15px; min-width: 0; }
+            .info-box strong { font-size: 1.2rem; }
+
+            .includes-grid { grid-template-columns: 1fr; gap: 20px; }
+            .include-img-container { height: 200px; }
+            
+            .pricing-section { padding: 25px 15px; }
+            .item-main { font-size: 1.1rem; }
+            .price-val { font-size: 1.6rem; }
+            .total-box { flex-direction: column; gap: 15px; text-align: center; }
+            .total-amount { font-size: 2.5rem; }
+
+            .expo-content { padding: 30px 20px; }
+            .expo-content h3 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -687,19 +707,6 @@
                         <div class="include-content">
                             <h4><i class="fa-solid fa-clipboard-check"></i> Coordinador VIP</h4>
                             <p>Gestión integral del evento para que usted solo se preocupe por disfrutar.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Capitán -->
-                <div class="reveal">
-                    <div class="include-item">
-                        <div class="include-img-container">
-                            <img src="capitan.webp" alt="Capitán" class="include-img">
-                        </div>
-                        <div class="include-content">
-                            <h4><i class="fa-solid fa-user-tie"></i> Capitán de Meseros</h4>
-                            <p>Supervisión directa del servicio a la mesa para una atención impecable y fluida.</p>
                         </div>
                     </div>
                 </div>
