@@ -1167,26 +1167,28 @@
         document.addEventListener("DOMContentLoaded", function() {
             var audio = document.getElementById("bgAudio");
             
-            // Try to play immediately
-            var playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.catch(function(error) {
-                    console.log("Autoplay bloqueado por el navegador. Esperando interacción del usuario...");
-                    
-                    // Fallback: Play on first user interaction if blocked
-                    var playOnInteraction = function() {
-                        audio.play();
-                        document.removeEventListener("click", playOnInteraction);
-                        document.removeEventListener("scroll", playOnInteraction);
-                        document.removeEventListener("touchstart", playOnInteraction);
-                    };
-                    
-                    document.addEventListener("click", playOnInteraction);
-                    document.addEventListener("scroll", playOnInteraction);
-                    document.addEventListener("touchstart", playOnInteraction);
-                });
-            }
+            var playAttempt = function() {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function() {
+                        // Playback started successfully! Remove listeners.
+                        document.removeEventListener("click", playAttempt);
+                        document.removeEventListener("touchstart", playAttempt);
+                        document.removeEventListener("keydown", playAttempt);
+                    }).catch(function(error) {
+                        // Playback prevented by browser policy. Keep listening for valid interactions.
+                        console.log("Audio en espera de interacción válida (clic/toque).");
+                    });
+                }
+            };
+
+            // Attempt to play immediately on load
+            playAttempt();
+
+            // Fallback: Listen for valid user gestures
+            document.addEventListener("click", playAttempt);
+            document.addEventListener("touchstart", playAttempt);
+            document.addEventListener("keydown", playAttempt);
         });
     </script>
 </body>
