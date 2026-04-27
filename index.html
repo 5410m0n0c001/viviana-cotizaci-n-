@@ -436,6 +436,66 @@
             transform: scale(1.05);
         }
 
+        /* Complementary Services */
+        .extra-services {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--beige);
+        }
+
+        .services-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .service-mini-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--background-light);
+            border-radius: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .service-mini-card:hover {
+            background: white;
+            border-color: var(--primary-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .mini-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            color: var(--primary-pink);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .mini-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--primary-dark);
+        }
+
+        .mini-text p {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            margin: 0;
+        }
+
         @media (max-width: 850px) {
             .expo-card { flex-direction: column-reverse; }
             .expo-img-box { min-height: 250px; }
@@ -750,6 +810,27 @@
                     <div class="expo-img-box">
                         <img src="expo.png" alt="Expo Boda y Quince Años">
                     </div>
+                </div>
+            </div>
+
+            <!-- Complementary Services -->
+            <div class="extra-services reveal">
+                <h3 class="section-title"><i class="fa-solid fa-star"></i> Servicios Complementarios</h3>
+                <div class="services-row">
+                    <a href="https://primaveraeventsgroup.com/invitaciones-digitales/" class="service-mini-card" target="_blank">
+                        <div class="mini-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div class="mini-text">
+                            <h4>Invitaciones Digitales</h4>
+                            <p>Diseños interactivos y personalizados para tu evento.</p>
+                        </div>
+                    </a>
+                    <a href="https://primaveraeventsgroup.com/paquetes-de-fotografia-y-video/" class="service-mini-card" target="_blank">
+                        <div class="mini-icon"><i class="fa-solid fa-camera-retro"></i></div>
+                        <div class="mini-text">
+                            <h4>Fotografía y Video</h4>
+                            <p>Paquetes profesionales para capturar cada momento.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
