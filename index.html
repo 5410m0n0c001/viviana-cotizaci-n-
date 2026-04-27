@@ -355,6 +355,115 @@
         .includes-grid > .reveal:nth-child(5) .include-item { animation-delay: 0.5s; }
         .includes-grid > .reveal:nth-child(6) .include-item { animation-delay: 0.6s; }
 
+        /* Expo Section */
+        .expo-section {
+            margin-top: 80px;
+            padding: 0 0px;
+        }
+
+        .expo-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            border-radius: 24px;
+            display: flex;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            align-items: stretch;
+        }
+
+        .expo-content {
+            padding: 50px;
+            flex: 1;
+        }
+
+        .expo-badge {
+            background: var(--primary-pink);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .expo-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .expo-content p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .btn-expo {
+            background: white;
+            color: var(--primary-dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-expo:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .expo-img-box {
+            flex: 1;
+            min-width: 40%;
+            overflow: hidden;
+        }
+
+        .expo-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+
+        .expo-card:hover .expo-img-box img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 850px) {
+            .expo-card { flex-direction: column-reverse; }
+            .expo-img-box { min-height: 250px; }
+            .expo-content { padding: 40px 25px; text-align: center; }
+            .expo-content h3 { font-size: 1.8rem; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             .header-main h2 { font-size: 2.2rem; }
@@ -627,6 +736,23 @@
                 </div>
             </div>
 
+            <!-- Expo Invitation -->
+            <div class="expo-section reveal">
+                <div class="expo-card">
+                    <div class="expo-content">
+                        <span class="expo-badge">Evento Especial</span>
+                        <h3>¡Acompáñanos en la Expo Boda y Quince Años!</h3>
+                        <p>Visítanos en el Centro de Convenciones Presidente y descubre todas las tendencias para tu gran día. ¡Te esperamos!</p>
+                        <a href="https://primaveraeventsgroup.com/expo-boda-y-quince-anos-centro-de-convenciones-presidente/" class="btn-expo" target="_blank">
+                            Más Información y Registro <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="expo-img-box">
+                        <img src="expo.png" alt="Expo Boda y Quince Años">
+                    </div>
+                </div>
+            </div>
+
             <!-- CTA -->
             <div class="cta-container reveal">
                 <p style="margin-bottom: 25px; font-style: italic; color: var(--gray-text);">"Hacemos de su aniversario un recuerdo eterno."</p>
@@ -638,8 +764,13 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Primavera Events Group. Transformando momentos en leyendas.</p>
+    <footer style="text-align: center; padding: 60px 20px; color: var(--gray-text); font-size: 0.9rem; background: var(--white);">
+        <p>&copy; 2026 Primavera Events Group. Todos los derechos reservados.</p>
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; font-size: 1.2rem;">
+            <a href="#" style="color: var(--primary-pink);"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" style="color: var(--primary-pink);"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color: var(--primary-pink);"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
     </footer>
 
     <script>
@@ -662,10 +793,6 @@
             reveals.forEach(reveal => {
                 observer.observe(reveal);
             });
-        });
-    </script>
-</body>
-</html>});
         });
     </script>
 </body>
