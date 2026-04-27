@@ -1158,5 +1158,36 @@
             });
         });
     </script>
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="marcasonora.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var audio = document.getElementById("bgAudio");
+            
+            // Try to play immediately
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    console.log("Autoplay bloqueado por el navegador. Esperando interacción del usuario...");
+                    
+                    // Fallback: Play on first user interaction if blocked
+                    var playOnInteraction = function() {
+                        audio.play();
+                        document.removeEventListener("click", playOnInteraction);
+                        document.removeEventListener("scroll", playOnInteraction);
+                        document.removeEventListener("touchstart", playOnInteraction);
+                    };
+                    
+                    document.addEventListener("click", playOnInteraction);
+                    document.addEventListener("scroll", playOnInteraction);
+                    document.addEventListener("touchstart", playOnInteraction);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
