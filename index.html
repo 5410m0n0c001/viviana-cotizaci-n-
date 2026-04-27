@@ -941,24 +941,33 @@
         </div>
     </footer>
 
-    <!-- Floating Social Menu -->
-    <div class="social-fab-container">
-        <div class="social-menu" id="socialMenu">
-            <a href="https://facebook.com/share/1GLd3Qt2Tj" target="_blank" class="social-item" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://instagram.com/primavera.events.group?igsh=Y2g4d3hvZW95dDc5" target="_blank" class="social-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://tiktok.com/@primavera_events_group?_r=1&_t=ZS-94uQ5m4lTyG" target="_blank" class="social-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://linkedin.com/in/richard-hernandez-3844ba3b9" target="_blank" class="social-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://tripadvisor.com/Profile/PrimaveraEventsGroup" target="_blank" class="social-item" title="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
-            <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
-        </div>
-        <button class="fab-main" id="fabMain">
-            <span class="fab-label">Síguenos en redes sociales</span>
-            <i class="fa-solid fa-share-nodes"></i>
+    <!-- Floating Actions -->
+    <div class="floating-actions-container">
+        <!-- Native Share Button -->
+        <button class="fab-action fab-share" id="btnShare" title="Compartir Propuesta">
+            <span class="fab-label">Compartir propuesta</span>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </button>
+
+        <!-- Social Menu FAB -->
+        <div class="social-fab-container">
+            <div class="social-menu" id="socialMenu">
+                <a href="https://facebook.com/share/1GLd3Qt2Tj" target="_blank" class="social-item" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/primavera.events.group?igsh=Y2g4d3hvZW95dDc5" target="_blank" class="social-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@primavera_events_group?_r=1&_t=ZS-94uQ5m4lTyG" target="_blank" class="social-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://linkedin.com/in/richard-hernandez-3844ba3b9" target="_blank" class="social-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://tripadvisor.com/Profile/PrimaveraEventsGroup" target="_blank" class="social-item" title="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
+            </div>
+            <button class="fab-main" id="fabMain">
+                <span class="fab-label">Síguenos en redes sociales</span>
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+        </div>
     </div>
 
     <style>
-        .social-fab-container {
+        .floating-actions-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -969,24 +978,30 @@
             gap: 15px;
         }
 
-        .fab-main {
+        .fab-main, .fab-share {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%);
             border: none;
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(246, 92, 122, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .fab-main:hover { transform: scale(1.1); }
+        .fab-main { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%); }
+        .fab-share { 
+            background: var(--primary-dark); 
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .fab-main:hover, .fab-share:hover { transform: scale(1.1); }
 
         .fab-label {
             position: absolute;
@@ -1004,7 +1019,7 @@
             font-weight: 500;
         }
 
-        .social-fab-container:hover .fab-label {
+        .fab-action:hover .fab-label, .social-fab-container:hover .fab-label {
             opacity: 1;
             visibility: visible;
             right: 70px;
@@ -1018,6 +1033,7 @@
             visibility: hidden;
             transform: translateY(20px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 15px;
         }
 
         .social-fab-container.active .social-menu {
@@ -1047,9 +1063,7 @@
             transform: scale(1.1);
         }
 
-        .social-fab-container.active .fab-main i {
-            transform: rotate(90deg);
-        }
+        .social-fab-container.active .fab-main i { transform: rotate(90deg); }
     </style>
 
     <script>
@@ -1074,6 +1088,24 @@
             fabMain.addEventListener('click', () => {
                 fabContainer.classList.toggle('active');
             });
+
+            // Native Share
+            const btnShare = document.getElementById('btnShare');
+            if (navigator.share) {
+                btnShare.addEventListener('click', async () => {
+                    try {
+                        await navigator.share({
+                            title: 'Propuesta Aniversario Viviana - Primavera Events Group',
+                            text: 'Cotización premium para aniversario: 90 invitados, banquete de gala y servicio integral.',
+                            url: window.location.href
+                        });
+                    } catch (err) {
+                        console.log('Share failed:', err);
+                    }
+                });
+            } else {
+                btnShare.style.display = 'none';
+            }
 
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
