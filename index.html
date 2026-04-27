@@ -591,14 +591,14 @@
             right: 20px;
             z-index: 1000;
             display: flex;
-            flex-direction: column-reverse; /* Bottom to top */
+            flex-direction: column; /* Normal flow: Social on top, Share on bottom */
             align-items: flex-end;
             gap: 20px;
         }
 
         .fab-group {
             display: flex;
-            flex-direction: column-reverse; /* Unfold upwards */
+            flex-direction: column;
             align-items: flex-end;
             position: relative; /* So the absolute menu anchors here */
         }
@@ -622,7 +622,7 @@
 
         /* Distinct Colors */
         .fab-share { 
-            background: linear-gradient(135deg, #1d1d1f 0%, #333333 100%); /* Premium Black */
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); /* Premium Gold */
         }
         .fab-contact { 
             background: linear-gradient(135deg, #2c3e50 0%, #000000 100%); /* Deep Navy/Black */
@@ -1065,7 +1065,7 @@
             </div>
             <button class="fab-main fab-social" id="btnSocial">
                 <span class="fab-label">Síguenos</span>
-                <i class="fa-solid fa-hashtag"></i>
+                <i class="fa-solid fa-thumbs-up"></i>
             </button>
         </div>
 
