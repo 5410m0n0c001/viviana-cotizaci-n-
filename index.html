@@ -400,6 +400,28 @@
             font-size: 1rem;
         }
 
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 20px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(246, 92, 122, 0.25);
+            border: 2px solid var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(246, 92, 122, 0.35);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-pink) 100%);
+        }
+
         .btn-expo {
             background: white;
             color: var(--primary-dark);
@@ -525,7 +547,12 @@
         }
 
         @media (max-width: 768px) {
-            .hero { height: 50vh; min-height: 350px; }
+            .hero { 
+                height: 55vh; 
+                min-height: 380px; 
+                background-position: center top; 
+                background-attachment: scroll;
+            }
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 0.9rem; letter-spacing: 3px; }
             
@@ -680,7 +707,6 @@
                         <div class="include-content" style="flex: 1; min-width: 300px;">
                             <h4><i class="fa-solid fa-utensils"></i> Banquete 3 Tiempos</h4>
                             <p>Una experiencia culinaria completa que incluye entrada gourmet, plato fuerte de autor y nuestra exclusiva tornafiesta.</p>
-                            <p style="margin-top: 15px; font-weight: 500; color: var(--primary-pink);">Vea nuestra propuesta de menú en el video adjunto.</p>
                         </div>
                     </div>
                 </div>
