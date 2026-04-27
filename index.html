@@ -943,22 +943,27 @@
 
     <!-- Floating Actions -->
     <div class="floating-actions-container">
-        <!-- Main Unfoldable Menu -->
+        <!-- 1. Native Share Button -->
+        <button class="fab-action fab-share" id="btnShare" title="Compartir Propuesta">
+            <span class="fab-label">Compartir Propuesta</span>
+            <i class="fa-solid fa-share-nodes"></i>
+        </button>
+
+        <!-- 2. Expandable Contact/Social Menu -->
         <div class="social-fab-container" id="mainFabContainer">
             <div class="social-menu" id="socialMenu">
-                <!-- Share (Native) -->
-                <button class="social-item share-btn" id="btnShare" title="Compartir"><i class="fa-solid fa-share-nodes"></i></button>
-                
                 <!-- Social Media -->
                 <a href="https://facebook.com/share/1GLd3Qt2Tj" target="_blank" class="social-item" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://instagram.com/primavera.events.group?igsh=Y2g4d3hvZW95dDc5" target="_blank" class="social-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://tiktok.com/@primavera_events_group?_r=1&_t=ZS-94uQ5m4lTyG" target="_blank" class="social-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://linkedin.com/in/richard-hernandez-3844ba3b9" target="_blank" class="social-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://tripadvisor.com/Profile/PrimaveraEventsGroup" target="_blank" class="social-item" title="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
                 
                 <!-- Contact Actions -->
                 <a href="tel:+527774587923" class="social-item" title="Regresar llamada"><i class="fa-solid fa-phone"></i></a>
                 <a href="mailto:contacto@primaveraeventsgroup.com" class="social-item" title="Enviar Correo"><i class="fa-solid fa-envelope"></i></a>
                 <a href="https://primaveraeventsgroup.com" target="_blank" class="social-item" title="Sitio Web"><i class="fa-solid fa-globe"></i></a>
-                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="social-item" title="Ver Ubicación"><i class="fa-solid fa-location-dot"></i></a>
             </div>
             <button class="fab-main" id="fabMain">
                 <span class="fab-label">Contacto y Redes</span>
@@ -976,9 +981,10 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            gap: 15px;
         }
 
-        .fab-main {
+        .fab-share, .fab-main {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -991,11 +997,13 @@
             justify-content: center;
             position: relative;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(246, 92, 122, 0.4);
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .fab-main:hover { transform: scale(1.1); }
+        .fab-share { background: var(--primary-dark); }
+        .fab-main { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%); }
+
+        .fab-share:hover, .fab-main:hover { transform: scale(1.1); }
 
         .fab-label {
             position: absolute;
@@ -1013,7 +1021,7 @@
             font-weight: 500;
         }
 
-        .social-fab-container:hover .fab-label {
+        .fab-share:hover .fab-label, .social-fab-container:hover .fab-label {
             opacity: 1;
             visibility: visible;
             right: 70px;
@@ -1028,12 +1036,14 @@
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             margin-bottom: 20px;
+            pointer-events: none;
         }
 
         .social-fab-container.active .social-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            pointer-events: auto;
         }
 
         .social-item {
@@ -1049,22 +1059,16 @@
             font-size: 1.3rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
         }
 
         .social-item:hover {
             background: var(--primary-pink);
             color: var(--white);
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15);
         }
-
-        .share-btn { color: var(--primary-dark); }
-        .share-btn:hover { background: var(--primary-dark); color: var(--white); }
 
         .social-fab-container.active .fab-main {
             transform: rotate(135deg);
-            background: var(--primary-dark);
         }
     </style>
 
@@ -1098,7 +1102,7 @@
                     try {
                         await navigator.share({
                             title: 'Propuesta Aniversario Viviana - Primavera Events Group',
-                            text: 'Cotización premium para aniversario: 90 invitados, banquete de gala y servicio integral.',
+                            text: '¡Hola! Te comparto la cotización premium para el aniversario de Viviana. Incluye banquete de gala, DJ y servicio integral.',
                             url: window.location.href
                         });
                     } catch (err) {
@@ -1106,7 +1110,9 @@
                     }
                 });
             } else {
-                btnShare.style.display = 'none';
+                btnShare.addEventListener('click', () => {
+                    alert('Tu navegador no soporta la función de compartir directamente. Copia el enlace de la barra de direcciones.');
+                });
             }
 
             // Close menu when clicking outside
