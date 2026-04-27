@@ -945,26 +945,7 @@
     <!-- Floating Actions Container -->
     <div class="floating-actions-container">
         
-        <!-- 1. Native Share Button -->
-        <button class="fab-main fab-share" id="btnShare" title="Compartir">
-            <span class="fab-label">Compartir</span>
-            <i class="fa-solid fa-share-nodes"></i>
-        </button>
-
-        <!-- 2. Contact Menu -->
-        <div class="fab-group" id="contactGroup">
-            <div class="fab-menu">
-                <a href="tel:+527774587923" class="fab-item" title="Llamar"><i class="fa-solid fa-phone"></i></a>
-                <a href="mailto:contacto@primaveraeventsgroup.com" class="fab-item" title="Correo"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="fab-item" title="Ubicación"><i class="fa-solid fa-location-dot"></i></a>
-            </div>
-            <button class="fab-main fab-contact" id="btnContact">
-                <span class="fab-label">Contacto</span>
-                <i class="fa-solid fa-address-book"></i>
-            </button>
-        </div>
-
-        <!-- 3. Social Menu -->
+        <!-- 1. SOCIAL MENU FAB -->
         <div class="fab-group" id="socialGroup">
             <div class="fab-menu">
                 <a href="https://facebook.com/share/1GLd3Qt2Tj" target="_blank" class="fab-item" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -976,9 +957,28 @@
             </div>
             <button class="fab-main fab-social" id="btnSocial">
                 <span class="fab-label">Síguenos</span>
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-hashtag"></i>
             </button>
         </div>
+
+        <!-- 2. CONTACT MENU FAB -->
+        <div class="fab-group" id="contactGroup">
+            <div class="fab-menu">
+                <a href="tel:+527774587923" class="fab-item" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:contacto@primaveraeventsgroup.com" class="fab-item" title="Correo"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://maps.app.goo.gl/Pj63bWfv6hmHr5RR9" target="_blank" class="fab-item" title="Ubicación"><i class="fa-solid fa-location-dot"></i></a>
+            </div>
+            <button class="fab-main fab-contact" id="btnContact">
+                <span class="fab-label">Contacto</span>
+                <i class="fa-solid fa-id-card-clip"></i>
+            </button>
+        </div>
+
+        <!-- 3. NATIVE SHARE FAB -->
+        <button class="fab-main fab-share" id="btnShare" title="Compartir">
+            <span class="fab-label">Compartir Propuesta</span>
+            <i class="fa-solid fa-share-nodes"></i>
+        </button>
 
     </div>
 
@@ -989,14 +989,14 @@
             right: 30px;
             z-index: 1000;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse; /* Bottom to top */
             align-items: flex-end;
             gap: 20px;
         }
 
         .fab-group {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse; /* Unfold upwards */
             align-items: flex-end;
         }
 
@@ -1013,14 +1013,21 @@
             justify-content: center;
             position: relative;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .fab-share { background: var(--primary-dark); }
-        .fab-contact { background: linear-gradient(135deg, #2c3e50 0%, #000000 100%); }
-        .fab-social { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%); }
+        /* Distinct Colors */
+        .fab-share { 
+            background: linear-gradient(135deg, #1d1d1f 0%, #333333 100%); /* Premium Black */
+        }
+        .fab-contact { 
+            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%); /* Deep Navy/Black */
+        }
+        .fab-social { 
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-light) 100%); /* Brand Pink */
+        }
 
-        .fab-main:hover { transform: scale(1.1); }
+        .fab-main:hover { transform: scale(1.1) translateY(-5px); }
 
         .fab-label {
             position: absolute;
@@ -1036,6 +1043,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             font-weight: 500;
+            pointer-events: none;
         }
 
         .fab-main:hover .fab-label {
@@ -1046,7 +1054,7 @@
 
         .fab-menu {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             gap: 12px;
             opacity: 0;
             visibility: hidden;
@@ -1064,8 +1072,8 @@
         }
 
         .fab-item {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--white);
             color: var(--primary-pink);
@@ -1073,7 +1081,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
@@ -1081,11 +1089,12 @@
         .fab-item:hover {
             background: var(--primary-pink);
             color: var(--white);
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
+        /* Active State Animation */
         .fab-group.active .fab-main {
-            transform: scale(0.9);
+            transform: rotate(15deg) scale(0.9);
             filter: brightness(1.2);
         }
     </style>
@@ -1105,13 +1114,13 @@
             }, observerOptions);
             reveals.forEach(reveal => { observer.observe(reveal); });
 
-            // FAB Groups Toggle
+            // FAB Groups Toggle Logic
             const fabGroups = document.querySelectorAll('.fab-group');
             fabGroups.forEach(group => {
                 const btn = group.querySelector('.fab-main');
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    // Close other groups
+                    // Close other group if open
                     fabGroups.forEach(other => {
                         if (other !== group) other.classList.remove('active');
                     });
@@ -1119,27 +1128,35 @@
                 });
             });
 
-            // Native Share
+            // Native Share Logic with Robust Error Handling & Fallback
             const btnShare = document.getElementById('btnShare');
-            if (navigator.share) {
-                btnShare.addEventListener('click', async () => {
-                    try {
-                        await navigator.share({
-                            title: 'Propuesta Aniversario Viviana - Primavera Events Group',
-                            text: '¡Hola! Te comparto la cotización premium para el aniversario de Viviana. Incluye banquete de gala, DJ y servicio integral.',
-                            url: window.location.href
-                        });
-                    } catch (err) {
-                        console.log('Share failed:', err);
-                    }
-                });
-            } else {
-                btnShare.addEventListener('click', () => {
-                    alert('Tu navegador no soporta la función de compartir directamente. Copia el enlace de la barra de direcciones.');
-                });
-            }
+            const shareData = {
+                title: 'Propuesta Aniversario Viviana - Primavera Events Group',
+                text: '¡Hola! Te comparto la cotización premium para el aniversario de Viviana. Incluye banquete de gala, DJ y servicio integral.',
+                url: window.location.href
+            };
 
-            // Close all menus when clicking outside
+            btnShare.addEventListener('click', async () => {
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            console.error('Share failed:', err);
+                        }
+                    }
+                } else {
+                    // Fallback: Copy to Clipboard
+                    try {
+                        await navigator.clipboard.writeText(window.location.href);
+                        alert('Enlace copiado al portapapeles. ¡Ya puedes pegarlo en WhatsApp o cualquier app!');
+                    } catch (err) {
+                        alert('Por favor, copia el enlace de la barra de direcciones de tu navegador.');
+                    }
+                }
+            });
+
+            // Close menus on click outside
             document.addEventListener('click', () => {
                 fabGroups.forEach(group => group.classList.remove('active'));
             });
