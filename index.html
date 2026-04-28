@@ -825,9 +825,29 @@
                         console.log("Error reproduciendo audio:", e);
                     });
                 }
+                // Desbloquear videos en contexto de interacción del usuario
+                // Esto evita que el navegador bloquee la reproducción automática
+                var vidsToUnlock = ['videoMenu', 'videoFirma'];
+                vidsToUnlock.forEach(function(vid_id) {
+                    var v = document.getElementById(vid_id);
+                    if (v) {
+                        v.play().then(function() {
+                            // Si el video aún no está en pantalla, pausarlo de inmediato
+                            // El IntersectionObserver lo reanudará cuando sea visible
+                            if (!isElementInViewport(v)) { v.pause(); }
+                        }).catch(function(e) {
+                            console.log('Video unlock attempt for ' + vid_id + ':', e);
+                        });
+                    }
+                });
                 // Ocultamos la precarga para revelar la página
                 hidePreloader();
             });
+
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+            }
         });
     </script>
 
@@ -1047,40 +1067,14 @@
                 </div>
 
                 <!-- Banquete 3 Tiempos -->
-                <div class="reveal" style="grid-column: 1 / -1;">
+                <div class="reveal" style="grid-column: 1 / -1;" id="banqueteReveal">
                     <div class="include-item" style="flex-direction: row; flex-wrap: wrap;">
                         <div class="include-img-container" style="flex: 1; min-width: 300px; position: relative; height: auto;">
                             <video id="videoMenu" autoplay muted loop playsinline preload="auto" style="width: 100%; height: auto; border-radius: 12px; display: block;">
                                 <source src="menu.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    var vid = document.getElementById('videoMenu');
-                                    if(vid) {
-                                        // Asegurar reproducción continua al ser visible
-                                        var observer = new IntersectionObserver(function(entries) {
-                                            entries.forEach(function(entry) {
-                                                if (entry.isIntersecting) {
-                                                    vid.play().catch(function(error) {
-                                                        console.warn("IntersectionObserver play prevented:", error);
-                                                    });
-                                                } else {
-                                                    vid.pause();
-                                                }
-                                            });
-                                        }, { threshold: 0.1 });
-                                        
-                                        observer.observe(vid);
 
-                                        // Respaldo extra para el loop
-                                        vid.addEventListener('ended', function() {
-                                            vid.currentTime = 0;
-                                            vid.play();
-                                        });
-                                    }
-                                });
-                            </script>
                         </div>
                         <div class="include-content" style="flex: 1; min-width: 300px;">
                             <h4><i class="fa-solid fa-utensils"></i> Banquete 3 Tiempos</h4>
@@ -1139,7 +1133,7 @@
 
             <!-- Firma de Aprobación -->
             <div class="signature-section reveal" style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
-                <video autoplay muted playsinline style="max-width: 280px; width: 100%; height: auto; mix-blend-mode: multiply;">
+                <video id="videoFirma" autoplay muted loop playsinline preload="auto" style="max-width: 280px; width: 100%; height: auto; mix-blend-mode: multiply;">
                     <source src="firma.mp4" type="video/mp4">
                 </video>
             </div>
@@ -1247,6 +1241,58 @@
                 });
             }, observerOptions);
             reveals.forEach(reveal => { observer.observe(reveal); });
+
+            // Centralized IntersectionObserver for autoplay videos
+            // Strategy: call play() when visible. Never forcibly pause via observer
+            // (the loop attribute + browser engine handles the rest)
+            const videoIds = ['videoMenu', 'videoFirma'];
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const vid = entry.target;
+                    if (entry.isIntersecting && vid.paused) {
+                        vid.play().catch(err => {
+                            console.warn('Video play prevented:', vid.id, err);
+                        });
+                    }
+                    // We do NOT pause here — let the browser handle it natively
+                });
+            }, { threshold: 0.05 });
+
+            videoIds.forEach(id => {
+                const vid = document.getElementById(id);
+                if (vid) {
+                    vid.loop = true;
+                    vid.muted = true;
+                    // Extra safety: re-play on ended event
+                    vid.addEventListener('ended', function() {
+                        vid.currentTime = 0;
+                        vid.play().catch(() => {});
+                    });
+                    // Try to play immediately if already visible
+                    if (vid.paused) {
+                        vid.play().catch(() => {});
+                    }
+                    videoObserver.observe(vid);
+                }
+            });
+
+            // Extra: When the banquete reveal activates, force-play the menu video
+            const banqueteReveal = document.getElementById('banqueteReveal');
+            if (banqueteReveal) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const vid = document.getElementById('videoMenu');
+                            if (vid && vid.paused) {
+                                vid.play().catch(err => {
+                                    console.warn('Banquete reveal play:', err);
+                                });
+                            }
+                        }
+                    });
+                }, { threshold: 0.05 });
+                revealObserver.observe(banqueteReveal);
+            }
 
             // FAB Groups Toggle Logic
             const fabGroups = document.querySelectorAll('.fab-group');
